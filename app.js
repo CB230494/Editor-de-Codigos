@@ -528,7 +528,7 @@ async function generatePdf(){
       sectionTitle(`Comparativa por ${(FIELD_LABELS[cmp.dim]||cmp.dim).toLowerCase()}`,18,68);
       doc.autoTable({
         startY:73,margin:{left:18,right:18,top:73,bottom:48},
-        head:[['Grupo','Incidentes','% del comparado','Hora pico','No ubicados']],
+        head:[['Grupo','Incidentes','Porcentaje del comparado','Hora de mayor incidencia','No ubicados']],
         body:cmp.groups.map(g=>[g.name,fmt.format(g.total),pct(g.pct),g.peakHours.length?g.peakHours.map(h=>`${String(h).padStart(2,'0')}:00`).join(' / '):'—',`${fmt.format(g.noUb)} (${pct(g.noUbPct)})`]),
         theme:'grid',styles:{font:'times',fontSize:8,cellPadding:2.4,textColor:BLACK,lineColor:LIGHT,lineWidth:.15,overflow:'linebreak'},
         headStyles:{fillColor:[238,238,238],textColor:BLACK,fontStyle:'bold'},columnStyles:{1:{halign:'right'},2:{halign:'right'},4:{halign:'right'}},pageBreak:'avoid',rowPageBreak:'avoid'
